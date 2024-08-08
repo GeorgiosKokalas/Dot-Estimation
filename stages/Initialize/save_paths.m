@@ -4,7 +4,7 @@ function path_opt = save_paths(ID)
     %   This also retrieves the last trial number and re-start from there. 
 	curr_dir = fileparts(which(mfilename));
     path_opt.exc_path = curr_dir; % ['../../', curr_dir]; % Execution path.
-    exp_dates = datetime('today');
+    exp_dates = datetime('now', 'Format', 'dd-MM-yyyy_hh-mm-ss');
 	path_opt.save_data = fullfile(path_opt.exc_path,'../../', ...
         'results/', ID, '/', string(exp_dates));
 	if ~exist(path_opt.save_data, 'dir') 
