@@ -42,7 +42,8 @@ while ~exit_key
             
             keyName = KbName(keyCode_newPress);
             keyName=remove_string(keyName); % remove extra string for number key presses
-            keysPressed.names = [keysPressed.names, {keyName}];
+            keysPressed.names = cat(2,keysPressed.names,str2cell(keyName));
+%             keysPressed.names = [keysPressed.names, {keyName}];
             
             % photodiode for each touch for now
             %                 if id_first_touch
