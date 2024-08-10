@@ -101,14 +101,17 @@ function main(varargin)
 
                 % Add number of trials.
                 path_opt.curr_trial	= path_opt.curr_trial + 1;
-                if path_opt.curr_trial > game_opt.sess_trs
-                    stage_idx = 21; % Session ends
+                stopExp = false;
+                if path_opt.curr_trial > game_opt.sess_trs           
+                    stopExp = true; % Session ends
                 end
                 disp('--------------------------------');
                 fprintf( 'Trial: %4.0d \n', path_opt.curr_trial);
     
                 % Preparing next trials
                 [curr_opt, stage_idx] = stage_ITI(game_opt);
+                
+                if stopExp; stage_idx = 21; end
     
                 % Time control.
                 align_time(times.ITI_start_t, ...
@@ -235,7 +238,7 @@ function main(varargin)
                 displayText(visual_opt.window, end_str, ...
                     [visual_opt.xCenter, visual_opt.yCenter], ...
                     visual_opt.white);
-                times.exp_dur = exp_end_t - exp_start_t;
+                times.exp_dur = times.exp_end_t - times.exp_start_t;
                 fprintf( 'experiment duration: %4.2d \n', times.exp_dur);
                 disp( '------------------------' );
 
